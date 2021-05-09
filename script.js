@@ -28,17 +28,14 @@ function submitFunc(e,ind) {
  console.log(i);
 ind=ind.charAt(0)
   let emailValue = document.getElementById(`emailValue${ind}`).value;
- // console.log(emailValue);
   emailArray.push(emailValue);
   console.log(emailArray);
- // clear();
+ clear(ind);
   e.preventDefault();
 }
 
 //show function
 detailEmailButton.addEventListener("click", (e) => {
- // clear();
- 
   let tableBody = document.getElementById("tableBody");
   tableBody.innerHTML=null;
 emailArray.forEach((element)=>{
@@ -51,9 +48,8 @@ emailArray.forEach((element)=>{
   e.preventDefault();
 });
 
-//clear function
-// const clear = () => {
-//   let emailValue = document.getElementById("emailValue");
-//   emailValue.value = " ";
-//   
-// };
+const clear = (ind) => {
+  let emailValue = document.getElementById(`emailValue${ind}`);
+  emailValue.value = " ";
+  
+};
