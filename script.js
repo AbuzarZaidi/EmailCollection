@@ -4,14 +4,14 @@ let newEmailButton = document.getElementById("newEmailButton");
 let submit = document.getElementById("0submit");
 let detailEmailButton = document.getElementById("detailEmailButton");
 let emailArray = [];
-let i=0;
+let i = 0;
 newEmailButton.addEventListener("click", (e) => {
- addEmail();
-e.preventDefault();
+  addEmail();
+  e.preventDefault();
 });
 //add email
-function addEmail(){
-i++;
+function addEmail() {
+  i++;
   let newEmail = document.getElementById("newEmail");
   newEmail.innerHTML += ` <form>
   <div class="mb-3">
@@ -24,26 +24,30 @@ i++;
   `;
 }
 
-function submitFunc(e,ind) {
- console.log(i);
-ind=ind.charAt(0)
+function submitFunc(e, ind) {
+  console.log(i);
+  ind = ind.charAt(0);
+
   let emailValue = document.getElementById(`emailValue${ind}`).value;
+
   emailArray.push(emailValue);
   console.log(emailArray);
- clear(ind);
+  clear(ind);
   e.preventDefault();
 }
 
 //show function
 detailEmailButton.addEventListener("click", (e) => {
   let tableBody = document.getElementById("tableBody");
-  tableBody.innerHTML=null;
-emailArray.forEach((element)=>{
-    let html = `<tr>
-<th scope="col">${element}</th>
-</tr>`;
-    tableBody.innerHTML += html;
-});
+  tableBody.innerHTML = null;
+  emailArray.forEach((element) => {
+    if (element != "") {
+      let html = `<tr>
+    <th scope="col">${element}</th>
+    </tr>`;
+      tableBody.innerHTML += html;
+    }
+  });
 
   e.preventDefault();
 });
@@ -51,5 +55,4 @@ emailArray.forEach((element)=>{
 const clear = (ind) => {
   let emailValue = document.getElementById(`emailValue${ind}`);
   emailValue.value = " ";
-  
 };
